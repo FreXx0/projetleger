@@ -7,9 +7,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+$utilisateur_id = $_SESSION["user_id"]; // Correction ici
 
-
-$utilisateur_id = $_SESSION["utilisateur_id"];
 $pdo = new PDO("mysql:host=localhost;dbname=bibliotheque;charset=utf8", "root", "");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

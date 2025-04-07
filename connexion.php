@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($mot_de_passe, $row['mot_de_passe'])) {
             // Connexion réussie, démarrer une session
             $_SESSION['user_id'] = $row['id'];
-            $_SESSION['nom_utilisateur'] = $row['nom_utilisateur'];
+            $_SESSION['nom'] = $row['nom'];
             echo "Connexion réussie. Vous pouvez maintenant ajouter des livres.";
         } else {
             echo "Mot de passe incorrect.";

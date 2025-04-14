@@ -1,93 +1,117 @@
 <?php
 // Connexion à la base de données
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bibliotheque";
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "bibliotheque"; 
 
+// Création d'une nouvelle connexion MySQLi
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Vérification de la connexion
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error); // Si la connexion échoue, afficher un message d'erreur et arrêter l'exécution
 }
 
-// Vérification si le formulaire est soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données du formulaire
-    $nom_utilisateur = $_POST['nom_utilisateur'];
-    $email = $_POST['email'];
-    $mot_de_passe = $_POST['mot_de_passe'];
+$message = ""; // Initialisation d'une variable pour stocker le message à afficher à l'utilisateur
 
-    // Hachage du mot de passe
+// Vérification de la méthode de requête POST (pour savoir si le formulaire a été soumis)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupération des données soumises par le formulaire
+    $nom_utilisateur = $_POST['nom_utilisateur']; // Nom d'utilisateur saisi
+    $email = $_POST['email']; // Email saisi
+    $mot_de_passe = $_POST['mot_de_passe']; // Mot de passe saisi
+
+    // Hashage du mot de passe pour le sécuriser avant de l'enregistrer
     $mot_de_passe_hache = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
-    // Vérifier si l'email est déjà utilisé
-    $sql_verif = "SELECT * FROM utilisateurs WHERE email = ?";
-    $stmt_verif = $conn->prepare($sql_verif);
-    $stmt_verif->bind_param("s", $email);
-    $stmt_verif->execute();
-    $result = $stmt_verif->get_result();
+    // Vérification si l'email existe déjà dans la base de données
+    $sql_verif = "SELECT * FROM utilisateurs WHERE email = ?"; // Requête pour vérifier l'email
+    $stmt_verif = $conn->prepare($sql_verif); // Préparation de la requête
+    $stmt_verif->bind_param("s", $email); // Liaison du paramètre (email) à la requête
+    $stmt_verif->execute(); // Exécution de la requête
+    $result = $stmt_verif->get_result(); // Récupération du résultat de la requête
 
+    // Vérification si un utilisateur avec le même email existe
     if ($result->num_rows > 0) {
-        echo "Un compte avec cet email existe déjà.";
+        $message = "❌ Un compte avec cet email existe déjà."; // Si un utilisateur existe déjà, afficher un message d'erreur
     } else {
-        // Requête SQL pour l'insertion
-        $query = "INSERT INTO utilisateurs (nom_utilisateur, email, mot_de_passe) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($query);
+        // Si l'email n'existe pas, procéder à l'ajout du nouvel utilisateur
+        $query = "INSERT INTO utilisateurs (nom, email, mot_de_passe) VALUES (?, ?, ?)"; // Requête pour insérer un nouvel utilisateur
+        $stmt = $conn->prepare($query); // Préparation de la requête d'insertion
 
+        // Vérification si la préparation de la requête a échoué
         if (!$stmt) {
-            die("Erreur de préparation de la requête : " . $conn->error);
+            die("Erreur de préparation de la requête : " . $conn->error); // Si erreur dans la préparation, afficher le message d'erreur
         }
 
-        // Lier les valeurs
+        // Liaison des paramètres (nom, email, mot de passe haché) à la requête
         $stmt->bind_param("sss", $nom_utilisateur, $email, $mot_de_passe_hache);
 
-        // Exécuter la requête
+        // Exécution de la requête d'insertion
         if ($stmt->execute()) {
-            echo "Compte créé avec succès. <a href='connexion.php'>Se connecter</a>";
+            $message = "✅ Compte créé avec succès. <a href='connexion.php'>Se connecter</a>"; // Si tout s'est bien passé, afficher un message de succès
         } else {
-            echo "Erreur lors de la création du compte : " . $stmt->error;
+            $message = "❌ Erreur lors de la création du compte : " . $stmt->error; // Si une erreur se produit lors de l'insertion, afficher le message d'erreur
         }
 
-        $stmt->close();
+        $stmt->close(); // Fermeture de la requête préparée
     }
 
-    $stmt_verif->close();
-    $conn->close();
+    $stmt_verif->close(); // Fermeture de la requête de vérification
+    $conn->close(); // Fermeture de la connexion à la base de données
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <!-- Définir l'encodage des caractères à UTF-8 -->
     <title>Inscription</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers la feuille de style externe pour la mise en forme -->
 </head>
 <body>
 
 <header>
-    <h1>Créer un compte</h1>
+    <div class="header-content">
+        <h1>Créer un compte</h1>
+    </div>
 </header>
 
+<nav class="navbar">
+    <a href="index.php" class="navbar-link">Accueil</a> 
+    <a href="connexion.php" class="navbar-link">Connexion</a>
+</nav>
+
 <main class="container">
-    <form method="POST" action="inscription.php">
-        <label for="nom_utilisateur">Nom d'utilisateur :</label>
-        <input type="text" id="nom_utilisateur" name="nom_utilisateur" required>
+    <h2>📝 Inscription</h2>
 
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required>
+    <?php if (!empty($message)): ?> <!-- Si un message est présent (succès ou erreur), l'afficher -->
+        <p style="color: <?= str_starts_with($message, '✅') ? 'green' : 'red' ?>; font-weight: bold;">
+            <?= $message ?> <!-- Affichage du message avec une couleur (verte pour succès, rouge pour erreur) -->
+        </p>
+    <?php endif; ?>
 
-        <label for="mot_de_passe">Mot de passe :</label>
-        <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+    <!-- Formulaire d'inscription -->
+    <form method="POST" action="inscription.php" style="margin-top: 20px;">
+        <label for="nom_utilisateur">Nom d'utilisateur :</label><br>
+        <input type="text" id="nom_utilisateur" name="nom_utilisateur" required><br><br> 
 
-        <button type="submit">S'inscrire</button>
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="email" required><br><br> 
+
+        <label for="mot_de_passe">Mot de passe :</label><br>
+        <input type="password" id="mot_de_passe" name="mot_de_passe" required><br><br> 
+
+        <button type="submit">S'inscrire</button> 
     </form>
 
-    <p>Vous avez déjà un compte ? <a href="connexion.php">Se connecter</a></p>
+    <p style="margin-top: 15px;">Déjà inscrit ? <a href="connexion.php">Se connecter</a></p> <!-- Lien vers la page de connexion -->
 </main>
+
+<footer>
+    <p>&copy; 2025 Bibliothèque - Tous droits réservés</p>
+</footer>
 
 </body>
 </html>

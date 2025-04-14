@@ -1,120 +1,167 @@
 /* Reset du CSS pour éviter les marges et paddings par défaut */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    margin: 0; /* Enlève la marge par défaut de tous les éléments */
+    padding: 0; /* Enlève le padding par défaut de tous les éléments */
+    box-sizing: border-box; /* Inclut les bordures et le padding dans la largeur et la hauteur des éléments */
+    font-family: 'Arial', sans-serif; /* Définit la police par défaut pour tout le document */
 }
 
 /* Style du body */
 body {
-    background-color: #f0f2f5;
-    color: #333;
-    font-size: 16px;
-    line-height: 1.6;
+    background-color: #f0f2f5; /* Couleur de fond du body */
+    color: #333; /* Couleur du texte principal */
+    font-size: 16px; /* Taille de la police par défaut */
+    line-height: 1.6; /* Hauteur de ligne pour améliorer la lisibilité */
 }
 
 /* En-tête */
 header {
     background-color: #4CAF50;
     color: white;
-    padding: 20px 0;
-    text-align: center;
+    padding: 20px 0; /* Espacement vertical de 20px autour du contenu */
+    text-align: center; /* Centrer le texte dans l'en-tête */
 }
 
 header .header-content h1 {
-    font-size: 2.5em;
-    margin: 0;
+    font-size: 2.5em; 
+    margin: 0; /* Enlève la marge par défaut autour du titre */
 }
 
 /* Navigation */
 .navbar {
-    background-color: #333;
-    overflow: hidden;
-    text-align: center;
+    background-color: #333; 
+    overflow: hidden; /* Assure que le contenu de la barre de navigation ne déborde pas */
+    text-align: center; 
 }
 
 .navbar .navbar-link {
-    display: inline-block;
-    padding: 14px 20px;
-    color: white;
-    text-decoration: none;
+    display: inline-block; /* Affiche les liens de manière en ligne avec un bloc */
+    padding: 14px 20px; 
+    color: white; 
+    text-decoration: none; /* Enlève la décoration (soulignement) des liens */
     font-size: 1.2em;
 }
 
 .navbar .navbar-link:hover {
-    background-color: #575757;
+    background-color: #575757; 
 }
 
 /* Conteneur principal */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px auto;
+    width: 90%; /* Largeur du conteneur principal à 90% de l'écran */
+    max-width: 1200px; /* Limite la largeur maximale du conteneur à 1200px */
+    margin: 30px auto; /* Marge en haut et en bas de 30px et centré horizontalement */
 }
 
 /* Table des livres */
 .table-wrapper {
-    margin-top: 20px;
-    overflow-x: auto;
+    margin-top: 20px; /* Ajoute un espace au-dessus de la table */
+    overflow-x: auto; /* Permet un défilement horizontal si nécessaire */
 }
 
 .book-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* La table occupe toute la largeur du conteneur */
+    border-collapse: collapse; /* Supprime les espaces entre les cellules de la table */
+    background-color: #fff; 
+    border-radius: 8px; /* Coins arrondis pour la table */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre subtile autour de la table */
 }
 
 .book-table th, .book-table td {
     padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    text-align: left; 
+    border-bottom: 1px solid #ddd; /* Ajoute une bordure légère en bas de chaque cellule */
 }
 
 .book-table th {
     background-color: #4CAF50;
-    color: white;
+    color: white; 
 }
 
 .book-table tr:hover {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; 
 }
 
 .book-table .btn-edit,
 .book-table .btn-delete {
-    display: inline-block;
-    padding: 8px 12px;
-    margin: 0 5px;
+    display: inline-block; /* Affiche les boutons en ligne */
+    padding: 8px 12px; 
+    margin: 0 5px; /* Espacement horizontal entre les boutons */
     color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    text-decoration: none; /* Enlève la décoration des liens */
+    border-radius: 5px; /* Coins arrondis des boutons */
 }
 
 .book-table .btn-edit {
-    background-color: #2196F3;
+    background-color: #2196F3; 
 }
 
 .book-table .btn-delete {
-    background-color: #f44336;
+    background-color: #f44336; 
 }
 
 .book-table .btn-edit:hover {
-    background-color: #1e88e5;
+    background-color: #1e88e5; /* Change la couleur du bouton "Modifier" au survol */
 }
 
 .book-table .btn-delete:hover {
-    background-color: #e53935;
+    background-color: #e53935; 
 }
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: #333; 
+    color: white; 
     text-align: center;
-    padding: 15px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    padding: 15px; 
+    position: relative; /* Positionnement relatif pour gérer l'affichage */
+    bottom: 0; /* Positionne le pied de page en bas de la page */
+    width: 100%; /* Largeur complète du pied de page */
+}
+
+/* Formulaire d'ajout ou de modification de livre */
+.book-form {
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 8px; /* Coins arrondis du formulaire */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère autour du formulaire */
+}
+
+.book-form label {
+    display: block; /* Affiche les labels sur une nouvelle ligne */
+    margin-top: 10px; /* Ajoute un espace au-dessus des labels */
+    font-weight: bold; /* Met en gras les labels */
+}
+
+.book-form input {
+    width: 100%; /* Les champs de saisie occupent toute la largeur du formulaire */
+    padding: 8px; 
+    margin-top: 5px; /* Espacement au-dessus des champs de saisie */
+    border: 1px solid #ccc; /* Bordure grise autour des champs */
+    border-radius: 4px; /* Coins arrondis des champs de saisie */
+}
+
+.btn-submit {
+    margin-top: 20px; /* Ajoute un espace au-dessus du bouton */
+    background-color: #4CAF50;
+    color: white; 
+    padding: 10px 15px; 
+    border: none; /* Enlève la bordure du bouton */
+    border-radius: 4px; /* Coins arrondis du bouton */
+    cursor: pointer; /* Change le curseur au survol pour indiquer que c'est cliquable */
+    font-size: 1em;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+/* Message de succès */
+.success-message {
+    background-color: #d4edda; 
+    border: 1px solid #c3e6cb; /* Bordure verte claire */
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px; /* Coins arrondis du message */
+    margin-bottom: 20px; /* Espace en bas du message */
 }

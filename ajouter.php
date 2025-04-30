@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Exécution de la requête avec les données du formulaire
     $stmt->execute([$titre, $auteur, $genre, $note]);
 
-    // Message de succès après l'ajout du livre
     $message = "✅ Livre ajouté ! <a href='index.php'>Voir mes livres</a>";
 }
 ?>
@@ -39,20 +38,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Livre</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">  <!-- Lien vers le fichier CSS -->
 </head>
 <body>
 
 <header>
     <div class="header-content">
-        <h1>Bibliothèque - Ajouter un Livre</h1> 
+        <h1>Bibliothèque - Ajouter un Livre</h1>  <!-- Titre de la page -->
     </div>
 </header>
 
 <nav class="navbar">
-    <a href="index.php" class="navbar-link">Accueil</a> 
-    <a href="ajouter.php" class="navbar-link">Ajouter un Livre</a>  
-    <a href="deconnexion.php" class="navbar-link">Se Déconnecter</a> 
+    <a href="index.php" class="navbar-link">Accueil</a>  <!-- Lien vers la page d'accueil -->
+    <a href="ajouter.php" class="navbar-link">Ajouter un Livre</a>  <!-- Lien vers cette page d'ajout de livre -->
+    <a href="deconnexion.php" class="navbar-link">Se Déconnecter</a>  <!-- Lien pour se déconnecter -->
 </nav>
 
 <main class="container">
@@ -65,23 +64,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Formulaire d'ajout de livre -->
     <form method="post" class="book-form">
         <label for="titre">Titre :</label>
-        <input type="text" name="titre" id="titre" required>  <!-- Champ pour le titre du livre -->
+        <input type="text" name="titre" id="titre" required> 
 
         <label for="auteur">Auteur :</label>
-        <input type="text" name="auteur" id="auteur" required>  <!-- Champ pour l'auteur du livre -->
+        <input type="text" name="auteur" id="auteur" required> 
 
         <label for="genre">Genre :</label>
-        <input type="text" name="genre" id="genre">  <!-- Champ pour le genre du livre -->
+        <input type="text" name="genre" id="genre"> 
 
         <label for="note">Note (0 à 5 étoiles) :</label>
-        <input type="number" name="note" id="note" min="0" max="5">  <!-- Champ pour la note du livre, de 0 à 5 -->
+        <input type="number" name="note" id="note" min="0" max="5"> 
 
-        <button type="submit" class="btn-submit">Ajouter</button>  <!-- Bouton pour soumettre le formulaire -->
+        <button type="submit" class="btn-submit">Ajouter</button> 
     </form>
 </main>
 
 <footer>
-    <p>&copy; 2025 Bibliothèque - Tous droits réservés</p>
+    <p>&copy; 2025 Bibliothèque - Tous droits réservés</p> 
 </footer>
 
 </body>

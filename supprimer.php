@@ -1,9 +1,9 @@
 <?php
-// Connexion à la base de données
-$host = "localhost"; 
-$dbname = "bibliotheque"; 
-$username = "root"; 
-$password = "";
+// Définition des informations de connexion à la base de données
+$host = "localhost"; // Adresse du serveur de la base de données
+$dbname = "bibliotheque"; // Nom de la base de données
+$username = "root"; // Nom d'utilisateur pour la connexion
+$password = ""; // Mot de passe pour la connexion (vide ici pour une configuration locale)
 
 try {
     // Tentative de connexion à la base de données avec PDO

@@ -16,34 +16,34 @@ body {
 
 /* En-tête */
 header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4CAF50; /* Couleur de fond de l'en-tête (vert) */
+    color: white; /* Couleur du texte (blanc) */
     padding: 20px 0; /* Espacement vertical de 20px autour du contenu */
     text-align: center; /* Centrer le texte dans l'en-tête */
 }
 
 header .header-content h1 {
-    font-size: 2.5em; 
+    font-size: 2.5em; /* Taille de la police du titre de l'en-tête */
     margin: 0; /* Enlève la marge par défaut autour du titre */
 }
 
 /* Navigation */
 .navbar {
-    background-color: #333; 
+    background-color: #333; /* Couleur de fond de la barre de navigation (gris foncé) */
     overflow: hidden; /* Assure que le contenu de la barre de navigation ne déborde pas */
-    text-align: center; 
+    text-align: center; /* Centre les éléments de navigation */
 }
 
 .navbar .navbar-link {
     display: inline-block; /* Affiche les liens de manière en ligne avec un bloc */
-    padding: 14px 20px; 
-    color: white; 
+    padding: 14px 20px; /* Espacement autour du texte des liens */
+    color: white; /* Couleur du texte des liens */
     text-decoration: none; /* Enlève la décoration (soulignement) des liens */
-    font-size: 1.2em;
+    font-size: 1.2em; /* Taille de la police des liens */
 }
 
 .navbar .navbar-link:hover {
-    background-color: #575757; 
+    background-color: #575757; /* Change la couleur de fond des liens au survol */
 }
 
 /* Conteneur principal */
@@ -62,42 +62,42 @@ header .header-content h1 {
 .book-table {
     width: 100%; /* La table occupe toute la largeur du conteneur */
     border-collapse: collapse; /* Supprime les espaces entre les cellules de la table */
-    background-color: #fff; 
+    background-color: #fff; /* Fond blanc de la table */
     border-radius: 8px; /* Coins arrondis pour la table */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre subtile autour de la table */
 }
 
 .book-table th, .book-table td {
-    padding: 12px 15px;
-    text-align: left; 
+    padding: 12px 15px; /* Espacement à l'intérieur des cellules */
+    text-align: left; /* Aligne le texte à gauche dans les cellules */
     border-bottom: 1px solid #ddd; /* Ajoute une bordure légère en bas de chaque cellule */
 }
 
 .book-table th {
-    background-color: #4CAF50;
-    color: white; 
+    background-color: #4CAF50; /* Fond vert pour les en-têtes de colonnes */
+    color: white; /* Couleur du texte des en-têtes (blanc) */
 }
 
 .book-table tr:hover {
-    background-color: #f2f2f2; 
+    background-color: #f2f2f2; /* Change le fond des lignes de la table au survol */
 }
 
 .book-table .btn-edit,
 .book-table .btn-delete {
     display: inline-block; /* Affiche les boutons en ligne */
-    padding: 8px 12px; 
+    padding: 8px 12px; /* Espacement autour du texte dans les boutons */
     margin: 0 5px; /* Espacement horizontal entre les boutons */
-    color: white;
+    color: white; /* Couleur du texte des boutons */
     text-decoration: none; /* Enlève la décoration des liens */
     border-radius: 5px; /* Coins arrondis des boutons */
 }
 
 .book-table .btn-edit {
-    background-color: #2196F3; 
+    background-color: #2196F3; /* Fond bleu pour le bouton "Modifier" */
 }
 
 .book-table .btn-delete {
-    background-color: #f44336; 
+    background-color: #f44336; /* Fond rouge pour le bouton "Supprimer" */
 }
 
 .book-table .btn-edit:hover {
@@ -105,15 +105,15 @@ header .header-content h1 {
 }
 
 .book-table .btn-delete:hover {
-    background-color: #e53935; 
+    background-color: #e53935; /* Change la couleur du bouton "Supprimer" au survol */
 }
 
 /* Footer */
 footer {
-    background-color: #333; 
-    color: white; 
-    text-align: center;
-    padding: 15px; 
+    background-color: #333; /* Couleur de fond du pied de page (gris foncé) */
+    color: white; /* Couleur du texte (blanc) */
+    text-align: center; /* Centre le texte dans le pied de page */
+    padding: 15px; /* Espacement autour du contenu du pied de page */
     position: relative; /* Positionnement relatif pour gérer l'affichage */
     bottom: 0; /* Positionne le pied de page en bas de la page */
     width: 100%; /* Largeur complète du pied de page */
@@ -121,8 +121,8 @@ footer {
 
 /* Formulaire d'ajout ou de modification de livre */
 .book-form {
-    background-color: #fff; 
-    padding: 20px; 
+    background-color: #fff; /* Fond blanc du formulaire */
+    padding: 20px; /* Espacement à l'intérieur du formulaire */
     border-radius: 8px; /* Coins arrondis du formulaire */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère autour du formulaire */
 }
@@ -135,7 +135,7 @@ footer {
 
 .book-form input {
     width: 100%; /* Les champs de saisie occupent toute la largeur du formulaire */
-    padding: 8px; 
+    padding: 8px; /* Espacement à l'intérieur des champs de saisie */
     margin-top: 5px; /* Espacement au-dessus des champs de saisie */
     border: 1px solid #ccc; /* Bordure grise autour des champs */
     border-radius: 4px; /* Coins arrondis des champs de saisie */
@@ -143,25 +143,25 @@ footer {
 
 .btn-submit {
     margin-top: 20px; /* Ajoute un espace au-dessus du bouton */
-    background-color: #4CAF50;
-    color: white; 
-    padding: 10px 15px; 
+    background-color: #4CAF50; /* Fond vert pour le bouton de soumission */
+    color: white; /* Couleur du texte du bouton (blanc) */
+    padding: 10px 15px; /* Espacement à l'intérieur du bouton */
     border: none; /* Enlève la bordure du bouton */
     border-radius: 4px; /* Coins arrondis du bouton */
     cursor: pointer; /* Change le curseur au survol pour indiquer que c'est cliquable */
-    font-size: 1em;
+    font-size: 1em; /* Taille de la police du bouton */
 }
 
 .btn-submit:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Change la couleur du bouton au survol */
 }
 
 /* Message de succès */
 .success-message {
-    background-color: #d4edda; 
+    background-color: #d4edda; /* Fond vert clair pour le message de succès */
     border: 1px solid #c3e6cb; /* Bordure verte claire */
-    color: #155724;
-    padding: 10px;
+    color: #155724; /* Couleur du texte du message (vert foncé) */
+    padding: 10px; /* Espacement à l'intérieur du message */
     border-radius: 5px; /* Coins arrondis du message */
     margin-bottom: 20px; /* Espace en bas du message */
 }

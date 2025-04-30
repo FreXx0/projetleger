@@ -37,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Si la méthode de la requête e
             header("Location: index.php");  // Redirige l'utilisateur vers la page d'accueil
             exit();
         } else {
-            $message = "❌ Mot de passe incorrect.";  // Si le mot de passe est incorrect
+            $message = "❌ Mot de passe incorrect.";  
         }
     } else {
-        $message = "❌ Aucun utilisateur trouvé avec cet email.";  // Si aucun utilisateur n'est trouvé avec cet email
+        $message = "❌ Aucun utilisateur trouvé avec cet email.";  
     }
 }
 
@@ -53,7 +53,7 @@ $conn->close();  // Ferme la connexion à la base de données
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS -->
 </head>
 <body>
 
@@ -65,31 +65,31 @@ $conn->close();  // Ferme la connexion à la base de données
 
 <nav class="navbar">
     <a href="index.php" class="navbar-link">Accueil</a> 
-    <a href="inscription.php" class="navbar-link">Créer un compte</a> 
+    <a href="inscription.php" class="navbar-link">Créer un compte</a>
 </nav>
 
 <main class="container">
     <h2>🔐 Connexion</h2>
 
-    <?php if (!empty($message)): ?> 
+    <?php if (!empty($message)): ?>  <!-- Si un message d'erreur existe, il est affiché -->
         <p style="color: red; font-weight: bold;"><?= $message ?></p>
     <?php endif; ?>
 
     <form method="POST" action="connexion.php" style="margin-top: 20px;">
         <label for="email">Email :</label><br>
-        <input type="email" id="email" name="email" required><br><br>  <!-- Champ pour l'email -->
+        <input type="email" id="email" name="email" required><br><br> 
 
         <label for="mot_de_passe">Mot de passe :</label><br>
-        <input type="password" id="mot_de_passe" name="mot_de_passe" required><br><br>  <!-- Champ pour le mot de passe -->
+        <input type="password" id="mot_de_passe" name="mot_de_passe" required><br><br> 
 
-        <button type="submit">Se connecter</button>  <!-- Bouton pour soumettre le formulaire -->
+        <button type="submit">Se connecter</button>  
     </form>
 
     <p style="margin-top: 15px;">Vous n'avez pas de compte ? <a href="inscription.php">Créer un compte</a></p>  <!-- Lien vers la page d'inscription -->
 </main>
 
 <footer>
-    <p>&copy; 2025 Bibliothèque - Tous droits réservés</p> 
+    <p>&copy; 2025 Bibliothèque - Tous droits réservés</p>
 </footer>
 
 </body>

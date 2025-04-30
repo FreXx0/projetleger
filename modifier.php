@@ -1,9 +1,9 @@
 <?php
-// Connexion à la base de données
-$host = "localhost"; 
-$dbname = "bibliotheque"; 
-$username = "root"; 
-$password = ""; 
+// Définition des paramètres de connexion à la base de données
+$host = "localhost"; // Hôte de la base de données (ici, le serveur local)
+$dbname = "bibliotheque"; // Nom de la base de données à utiliser
+$username = "root"; // Nom d'utilisateur pour se connecter à la base de données (ici root)
+$password = ""; // Mot de passe pour la connexion à la base de données (ici vide)
 
 $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password); // Création d'une instance PDO pour se connecter à la base de données avec l'encodage UTF-8
 
@@ -14,10 +14,10 @@ $id = $_GET['id'] ?? null; // Récupération de l'identifiant du livre depuis l'
 // Vérification si le formulaire a été soumis en méthode POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des valeurs saisies dans le formulaire
-    $titre = $_POST['titre']; 
-    $auteur = $_POST['auteur']; 
-    $genre = $_POST['genre']; 
-    $note = $_POST['note'];
+    $titre = $_POST['titre']; // Titre du livre
+    $auteur = $_POST['auteur']; // Auteur du livre
+    $genre = $_POST['genre']; // Genre du livre
+    $note = $_POST['note']; // Note du livre
 
     // Requête SQL pour mettre à jour les informations du livre dans la base de données
     $sql = "UPDATE livres SET titre = ?, auteur = ?, genre = ?, note = ? WHERE id = ?"; // Requête d'UPDATE avec des paramètres
@@ -43,25 +43,25 @@ if (!$livre) {
 ?>
 
 <!-- Formulaire de modification du livre -->
-<h1>✏️ Modifier le livre</h1> 
+<h1>✏️ Modifier le livre</h1>
 
 <!-- Formulaire de type POST pour soumettre les modifications -->
 <form method="post">
     <label>Titre :</label><br> 
     <input type="text" name="titre" value="<?= htmlspecialchars($livre['titre']) ?>" required><br><br> 
 
-    <label>Auteur :</label><br> 
+    <label>Auteur :</label><br>
     <input type="text" name="auteur" value="<?= htmlspecialchars($livre['auteur']) ?>" required><br><br> 
 
-    <label>Genre :</label><br> 
+    <label>Genre :</label><br>
     <input type="text" name="genre" value="<?= htmlspecialchars($livre['genre']) ?>"><br><br> 
-    <label>Note :</label><br>
+
+    <label>Note :</label><br> 
     <input type="number" name="note" value="<?= htmlspecialchars($livre['note']) ?>" min="0" max="5"><br><br> 
 
-    <button type="submit">💾 Enregistrer</button>
+    <button type="submit">💾 Enregistrer</button> 
 </form>
 
 <br>
 
-<!-- Lien pour revenir à la page de la liste des livres -->
 <a href="index.php">📚 Retour à la liste</a>

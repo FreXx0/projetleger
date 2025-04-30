@@ -11,19 +11,22 @@
 
 <body>
     <h1>Ajouter un livre à ma bibliothèque</h1>
-    
 
     <form action="ajouter.php" method="post">
         <!-- Formulaire qui envoie une requête POST vers la page 'ajouter.php' -->
 
         <label>Titre :</label><br>
-        <input type="text" name="titre" required><br><br> 
+        <input type="text" name="titre" required><br><br>
+
         <label>Auteur :</label><br>
         <input type="text" name="auteur" required><br><br>
+
         <label>Genre :</label><br>
         <input type="text" name="genre"><br><br>
+
         <label>Note (0 à 5 étoiles) :</label><br>
         <input type="number" name="note" min="0" max="5"><br><br>
+
         <button type="submit">Ajouter</button>
     </form>
 

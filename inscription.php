@@ -1,9 +1,9 @@
 <?php
 // Connexion à la base de données
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$dbname = "bibliotheque"; 
+$servername = "localhost"; // Nom du serveur de la base de données (ici, le serveur local)
+$username = "root"; // Nom d'utilisateur pour se connecter à la base de données (ici root)
+$password = ""; // Mot de passe pour la connexion (ici vide)
+$dbname = "bibliotheque"; // Nom de la base de données à utiliser
 
 // Création d'une nouvelle connexion MySQLi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérification si un utilisateur avec le même email existe
     if ($result->num_rows > 0) {
-        $message = "❌ Un compte avec cet email existe déjà."; // Si un utilisateur existe déjà, afficher un message d'erreur
+        $message = "❌ Un compte avec cet email existe déjà.";
     } else {
         // Si l'email n'existe pas, procéder à l'ajout du nouvel utilisateur
         $query = "INSERT INTO utilisateurs (nom, email, mot_de_passe) VALUES (?, ?, ?)"; // Requête pour insérer un nouvel utilisateur
@@ -50,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Exécution de la requête d'insertion
         if ($stmt->execute()) {
-            $message = "✅ Compte créé avec succès. <a href='connexion.php'>Se connecter</a>"; // Si tout s'est bien passé, afficher un message de succès
+            $message = "✅ Compte créé avec succès. <a href='connexion.php'>Se connecter</a>";
         } else {
-            $message = "❌ Erreur lors de la création du compte : " . $stmt->error; // Si une erreur se produit lors de l'insertion, afficher le message d'erreur
+            $message = "❌ Erreur lors de la création du compte : " . $stmt->error;
         }
 
         $stmt->close(); // Fermeture de la requête préparée
@@ -67,24 +67,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8"> <!-- Définir l'encodage des caractères à UTF-8 -->
-    <title>Inscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Assurer la responsivité sur les appareils mobiles -->
+    <title>Inscription</title> <!-- Titre de la page qui apparaîtra dans l'onglet du navigateur -->
     <link rel="stylesheet" href="style.css"> <!-- Lien vers la feuille de style externe pour la mise en forme -->
 </head>
 <body>
 
 <header>
     <div class="header-content">
-        <h1>Créer un compte</h1>
+        <h1>Créer un compte</h1> 
     </div>
 </header>
 
 <nav class="navbar">
     <a href="index.php" class="navbar-link">Accueil</a> 
-    <a href="connexion.php" class="navbar-link">Connexion</a>
+    <a href="connexion.php" class="navbar-link">Connexion</a> 
 </nav>
 
 <main class="container">
-    <h2>📝 Inscription</h2>
+    <h2>📝 Inscription</h2> 
 
     <?php if (!empty($message)): ?> <!-- Si un message est présent (succès ou erreur), l'afficher -->
         <p style="color: <?= str_starts_with($message, '✅') ? 'green' : 'red' ?>; font-weight: bold;">
@@ -92,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </p>
     <?php endif; ?>
 
-    <!-- Formulaire d'inscription -->
     <form method="POST" action="inscription.php" style="margin-top: 20px;">
         <label for="nom_utilisateur">Nom d'utilisateur :</label><br>
         <input type="text" id="nom_utilisateur" name="nom_utilisateur" required><br><br> 
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">S'inscrire</button> 
     </form>
 
-    <p style="margin-top: 15px;">Déjà inscrit ? <a href="connexion.php">Se connecter</a></p> <!-- Lien vers la page de connexion -->
+    <p style="margin-top: 15px;">Déjà inscrit ? <a href="connexion.php">Se connecter</a></p>
 </main>
 
 <footer>

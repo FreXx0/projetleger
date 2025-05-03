@@ -42,10 +42,18 @@ if (!$livre) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier le livre</title>
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers la feuille de style externe -->
+</head>
+<body>
+
 <!-- Formulaire de modification du livre -->
 <h1>✏️ Modifier le livre</h1>
 
-<!-- Formulaire de type POST pour soumettre les modifications -->
 <form method="post">
     <label>Titre :</label><br> 
     <input type="text" name="titre" value="<?= htmlspecialchars($livre['titre']) ?>" required><br><br> 
@@ -65,3 +73,6 @@ if (!$livre) {
 <br>
 
 <a href="index.php">📚 Retour à la liste</a>
+
+</body>
+</html>

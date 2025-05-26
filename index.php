@@ -37,7 +37,8 @@ $result = $conn->query($sql); // Exécution de la requête et récupération du 
 <nav class="navbar">
     <a href="index.php" class="navbar-link">Accueil</a> <!-- Lien vers la page d'accueil -->
     <a href="ajouter.php" class="navbar-link">Ajouter un Livre</a> <!-- Lien vers la page d'ajout d'un livre -->
-    <a href="deconnexion.php" class="navbar-link">Se Déconnecter</a> <!-- Lien vers la page de déconnexion -->
+    <a href="livre_a_la_une.php" class ="navbar-link">Livre à La Une </a> <!-- Lien vers la page Livre à la une -->
+    <a href="deconnexion.php" class="navbar-link">Se Connecter</a> <!-- Lien vers la page de Connexion -->
 </nav>
 
 <main class="container">
